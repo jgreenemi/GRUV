@@ -1,5 +1,8 @@
 *.pyc
 datasets/YourMusicLibrary/*
+
+# Additonal ignores.
+.idea/*
 env/*
 startworkspace.sh
 .ipynb_checkpoints/*

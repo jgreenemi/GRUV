@@ -110,7 +110,7 @@ def fft_blocks_to_time_blocks(blocks_ft_domain):
         time_blocks.append(time_block)
     return time_blocks
 
-def convert_wav_files_to_nptensor(directory, block_size, max_seq_len, out_file, max_files=20, useTimeDomain=False):
+def convert_wav_files_to_nptensor(directory, block_size: int, max_seq_len, out_file, max_files=20, useTimeDomain=False):
     files = []
     for file in os.listdir(directory):
         if file.endswith('.wav'):
@@ -120,6 +120,7 @@ def convert_wav_files_to_nptensor(directory, block_size, max_seq_len, out_file, 
     num_files = len(files)
     if(num_files > max_files):
         num_files = max_files
+
     for file_idx in range(num_files):
         file = files[file_idx]
         print('Processing: ', (file_idx+1),'/',num_files)
@@ -133,13 +134,16 @@ def convert_wav_files_to_nptensor(directory, block_size, max_seq_len, out_file, 
             chunks_X.append(X[cur_seq:cur_seq+max_seq_len])
             chunks_Y.append(Y[cur_seq:cur_seq+max_seq_len])
             cur_seq += max_seq_len
+
     num_examples = len(chunks_X)
     num_dims_out = block_size * 2
+
     if(useTimeDomain):
         num_dims_out = block_size
 
     out_shape = (num_examples, max_seq_len, num_dims_out)
     print(f'out_shape: {out_shape}')
+
     x_data = np.zeros(out_shape)
     y_data = np.zeros(out_shape)
     

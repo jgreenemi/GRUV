@@ -140,6 +140,7 @@ def convert_wav_files_to_nptensor(directory, block_size, max_seq_len, out_file, 
     out_shape = (num_examples, max_seq_len, num_dims_out)
     x_data = np.zeros(out_shape)
     y_data = np.zeros(out_shape)
+    
     for n in range(num_examples):
         for i in range(max_seq_len):
             x_data[n][i] = chunks_X[n][i]

@@ -2,3 +2,4 @@
 datasets/YourMusicLibrary/*
 env/*
 startworkspace.sh
+.ipynb_checkpoints/*
